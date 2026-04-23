@@ -1,0 +1,183 @@
+/* static://launcher/menu.css */
+
+/* ============================================
+ *  CSS CUSTOM PROPERTIES (VARIABLES)
+ *  ============================================ */
+
+:root {
+    /* Spacing Scale (in cqh - container query height units) */
+    --space-1: 0.093cqh;   /* 1px at 1080p */
+    --space-2: 0.185cqh;   /* 2px */
+    --space-4: 0.37cqh;    /* 4px */
+    --space-8: 0.74cqh;    /* 8px */
+    --space-10: 0.93cqh;   /* 10px */
+    --space-15: 1.39cqh;   /* 15px */
+    --space-20: 1.85cqh;   /* 20px */
+    --space-24: 2.22cqh;   /* 24px */
+    --space-30: 2.78cqh;   /* 30px */
+    --space-45: 4.17cqh;   /* 45px */
+
+    /* Colors */
+    --color-black: #000000;
+    --color-bg-dark: #0a0a0a;
+    --color-text-light: #f2f2f2;
+    --color-text-lighter: #eee;
+    --color-accent: #f9d65c;
+    --color-accent-glow: rgba(255, 230, 150, 0.4);
+    --color-bg-overlay: rgba(255, 255, 255, 0.05);
+    --color-button-start: #1c1c1c;
+    --color-button-end: #2a2a2a;
+    --color-button-hover-start: #2a2a2a;
+    --color-button-hover-end: #3c3c3c;
+    --color-border: #333;
+    --color-border-hover: var(--color-accent);
+    --color-scrollbar: #444;
+    --color-scrollbar-hover: #666;
+}
+
+/* ============================================
+ *  LAYOUT STRUCTURE
+ *  ============================================ */
+
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: var(--color-black);
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-light);
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+
+    /* Force 16:9 aspect ratio and center */
+    aspect-ratio: 16 / 9;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* Scale to fit viewport */
+    width: 100vw;
+    height: calc(100vw * 9 / 16);
+    max-height: 100vh;
+    max-width: calc(100vh * 16 / 9);
+
+    /* Enable container queries */
+    container-type: size;
+}
+
+/* ============================================
+ *  TYPOGRAPHY
+ *  ============================================ */
+
+h1 {
+    margin: var(--space-30) 0 var(--space-20);
+    text-align: center;
+    font-size: var(--space-45);
+    letter-spacing: var(--space-2);
+    color: var(--color-accent);
+    text-shadow: 0 0 var(--space-10) var(--color-accent-glow);
+}
+
+/* ============================================
+ *  ENTRY LIST
+ *  ============================================ */
+
+#entry-list {
+flex: 1;
+width: 80%;
+max-width: 41.67cqw; /* 800px at 1920p */
+overflow-y: auto;
+background: var(--color-bg-overlay);
+border-radius: var(--space-10);
+padding: var(--space-20);
+box-shadow: 0 0 var(--space-20) rgba(0, 0, 0, 0.5) inset;
+}
+
+.entry-button {
+    display: block;
+    width: 100%;
+    background: linear-gradient(90deg, var(--color-button-start), var(--color-button-end));
+    border: var(--space-1) solid var(--color-border);
+    border-radius: var(--space-10);
+    color: var(--color-text-lighter);
+    font-size: var(--space-30);
+    padding: var(--space-15) var(--space-20);
+    margin: var(--space-10) 0;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.entry-button:hover {
+    background: linear-gradient(90deg, var(--color-button-hover-start), var(--color-button-hover-end));
+    border-color: var(--color-border-hover);
+    transform: translateY(calc(-1 * var(--space-2)));
+}
+
+/* ============================================
+ *  SCROLLBAR
+ *  ============================================ */
+
+::-webkit-scrollbar {
+    width: var(--space-8);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-scrollbar);
+    border-radius: var(--space-4);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-scrollbar-hover);
+}
+
+/* ============================================
+ *  POPUP
+ *  ============================================ */
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: var(--space-20);
+    border-radius: var(--space-20);
+    text-align: center;
+    z-index: 9999;
+    min-width: 30%;
+}
+
+.popup p {
+    font-size: var(--space-24);
+    font-weight: bold;
+    margin: 0 0 var(--space-10) 0;
+}
+
+.popup-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: var(--space-10) var(--space-20);
+    margin-top: var(--space-10);
+    cursor: pointer;
+    font-size: var(--space-20);
+    font-weight: bold;
+    border-radius: var(--space-10);
+    transition: background 0.3s ease;
+}
+
+.popup-btn:hover {
+    background-color: #218838;
+}

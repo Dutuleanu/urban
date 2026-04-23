@@ -1,0 +1,25 @@
+{
+  "game": [
+    {
+      "output": "index.html",
+      "components": [
+        "index.html"
+      ],
+      "componentPath": "game"
+    },
+    {
+      "output": "style.css",
+      "components": [
+        "css/root.css",
+        "game/style.css"
+      ]
+    },
+    {
+      "output": "script.js",
+      "components": [
+        "script.js"
+      ],
+      "componentPath": "game"
+    }
+  ]
+}

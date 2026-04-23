@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="Content-Security-Policy"
+      content="default-src 'self' static:;
+               script-src 'self' static: 'unsafe-inline';
+               style-src 'self' static:;
+               object-src 'none';">
+    <title>Process Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Process Manager</h1>
+
+    <div class="button-grid">
+        <button id="btnRefresh">Refresh List</button>
+        <button id="btnKillAll">Kill All Processes</button>
+    </div>
+
+    <div id="process-list"></div>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "pixi.js": "static://libs/pixi.mjs"
+        }
+    }
+    </script>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

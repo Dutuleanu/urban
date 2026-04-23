@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Open Source Licenses</title>
+    <style>
+        body { font-family: sans-serif; padding: 40px; background: #121212; color: #eee; line-height: 1.6; }
+        .license-item { background: #1e1e1e; padding: 20px; margin-bottom: 20px; border: 1px solid #333; border-radius: 5px; }
+        pre { background: #000; color: #adbac7; padding: 15px; overflow: auto; white-space: pre-wrap; font-size: 12px; border: 1px solid #444; }
+        h2 { color: #58a6ff; margin-top: 0; }
+    </style>
+</head>
+<body>
+    <h1>Third-Party Licenses</h1>
+    <div id="container"></div>
+
+    <script src="./licenses.js"></script>
+
+    <script>
+        (function render() {
+            const container = document.getElementById('container');
+
+            // 2. Access the 'window.licenseData' created by the script above
+            if (!window.licenseData) {
+                container.innerHTML = "<h2>Error: window.licenseData not found. Check licenses.js</h2>";
+                return;
+            }
+
+            Object.keys(window.licenseData).forEach(pkgName => {
+                const info = window.licenseData[pkgName];
+                const section = document.createElement('div');
+                section.className = 'license-item';
+
+                const title = document.createElement('h2');
+                title.textContent = pkgName;
+
+                const body = document.createElement('pre');
+                // Use textContent to safely render the 'cursed' HTML strings as plain text
+                body.textContent = info.licenseText || "No license text available.";
+
+                section.appendChild(title);
+                section.appendChild(body);
+                container.appendChild(section);
+            });
+        })();
+    </script>
+</body>
+</html>
