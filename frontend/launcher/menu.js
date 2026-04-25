@@ -1,6 +1,6 @@
 // static://launcher/menu.js
-
 // --- Menu Initialization ---
+
 async function initializeMenu() {
     try {
         const result = await window.api.clearPlaybox('all');
@@ -10,10 +10,10 @@ async function initializeMenu() {
     }
 
     const entries = [
-        { name: "Game", config: "game.json", file: "game/index.html"},
-        { name: "Credits", config: "credits.json", file: "credits/index.html"},
-        { name: "Quit Game", config: null, file: null},
-        { name: "Manual", config: "procmon.json", file: "procmon/index.html"}
+        { name: "Game", config: "game.json", file: "game/index.html" },
+        { name: "Credits", config: null, file: "licenses/licenses.html", modifier: "static" },
+        { name: "Quit Game", config: null, file: null, modifier: "exit" },
+        { name: "Manual", config: "procmon.json", file: "procmon/index.html" }
     ];
 
     // --- DOM references
@@ -34,8 +34,26 @@ async function initializeMenu() {
         const btn = document.createElement("button");
         btn.className = "entry-button";
         btn.textContent = g.name;
+
         btn.addEventListener("click", async () => {
             try {
+                // --- Handle Modifiers ---
+                switch (g.modifier) {
+                    case "exit":
+                        await window.api.endSession();
+                        return; // Stop execution here
+
+                    case "static":
+                        // Navigate directly without calling assemblePlaybox
+                        const staticResult = await window.api.navigate(g.file, 'static');
+                        if (!staticResult?.data?.success) {
+                            createPopup(`Failed to navigate to ${g.name}`);
+                        }
+                        return; // Stop execution here
+                }
+
+                // --- Standard Logic (No modifier or unknown modifier) ---
+
                 // Step 1: assemble playbox using config
                 const result = await window.api.assemblePlaybox(g.config);
                 if (!result?.data?.success) {
@@ -43,6 +61,7 @@ async function initializeMenu() {
                     createPopup(`Failed to assemble ${g.name}`);
                     return;
                 }
+
                 // Step 2: navigate to the entry file in the playbox
                 const navResult = await window.api.navigate(`playbox/${g.file}`);
                 if (!navResult?.data?.success) {
@@ -59,22 +78,19 @@ async function initializeMenu() {
 }
 
 function createPopup(message) {
-    // Create the popup container
     const popup = document.createElement('div');
     popup.classList.add('popup');
-    // Create the popup message
+
     const popupMessage = document.createElement('p');
     popupMessage.textContent = message;
     popup.appendChild(popupMessage);
-    // Create the "OK" button
+
     const okButton = document.createElement('button');
     okButton.textContent = 'OK';
     okButton.classList.add('popup-btn');
-    okButton.addEventListener('click', function () {
-        popup.remove(); // Remove the popup when OK is clicked
-    });
+    okButton.addEventListener('click', () => popup.remove());
+
     popup.appendChild(okButton);
-    // Append the popup to the body
     document.body.appendChild(popup);
 }
 
