@@ -12,18 +12,17 @@ int32_t stdin_bytes_available(void) {
 }
 
 #else
-#include <sys/select.h>
+#include <sys/ioctl.h>
 #include <unistd.h>
+#include <termios.h> // Sometimes required on older Posix systems
 
 int32_t stdin_bytes_available(void) {
-    fd_set fds;
-    FD_ZERO(&fds);
-    FD_SET(STDIN_FILENO, &fds);
-    struct timeval tv = {0, 0};
-    int32_t r = select(STDIN_FILENO + 1, &fds, NULL, NULL, &tv);
-    if (r < 0) return -1;
-    if (r == 0) return 0;
-    return 8;
+    int bytes;
+    // FIONREAD is widely supported across BSD, Linux, and macOS
+    if (ioctl(STDIN_FILENO, FIONREAD, &bytes) < 0) {
+        return -1;
+    }
+    return (int32_t)bytes;
 }
 
 #endif
