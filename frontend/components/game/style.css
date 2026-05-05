@@ -2,19 +2,20 @@
 h1 {
     margin-bottom: var(--space-30);
     color: var(--color-accent);
-    font-size: var(--space-100);
+    font-size: var(--space-150);
+  
 }
 
 .button-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(var(--space-200), 1fr));
-    gap: var(--space-20);
+    gap: var(--space-45);
     width: 100%;
-    max-width: var(--space-800);
+    max-width: var(--space-200);
 }
 
 button {
-    padding: var(--space-15) var(--space-20);
+    padding: var(--space-12) var(--space-20);
     font-size: var(--space-40);
     border: none;
     border-radius: var(--space-12);
