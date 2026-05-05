@@ -2,14 +2,13 @@
 
 import { Application, Assets, Sprite, } from 'pixi.js';
 
-const processList = document.getElementById('process-list');
-const btnRefresh = document.getElementById('btnRefresh');
-const btnKillAll = document.getElementById('btnKillAll');
+const btnNewGame = document.getElementById('btnNewGame');
+const btnLoadGame = document.getElementById('btnLoadGame');
+const btnKillAll = document.getElementById('btnBackMainMenu');
 
-console.log("Type window.api.startApp(\"components/runner.js\") in order to start an app you can try to kill.");
-console.log("Refresh the list, read the pid's number N and type foo=await window.api.readApp(N), then type console.log(new TextDecoder().decode(foo.data.stdout)) to see some output.");
 
-async function refreshList() {
+
+/*async function refreshList() {
     const result = await window.api.listApps();
 
     if (result.success) {
@@ -64,6 +63,17 @@ async function killAll() {
 
 btnRefresh.addEventListener('click', refreshList);
 btnKillAll.addEventListener('click', killAll);
-
+*/
 // Auto-refresh on load
-refreshList();
+function NewGame(){
+    console.log("Work!");
+}
+function LoadGame(){
+   console.log("Work!");
+}
+function exit(){
+    window.api.navigate("launcher/menu.html","static");
+}
+btnNewGame.addEventListener("click",NewGame);
+btnLoadGame.addEventListener("click", LoadGame);
+btnKillAll.addEventListener("click", exit);
