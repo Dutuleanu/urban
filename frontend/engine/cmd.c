@@ -106,15 +106,39 @@ void dump_to_file(void){
 
 //4 byte x, 4 byte y, 4 byte building ID
 void tile_build (void){
+    int32_t id;
+    uint32_t x, y;
+    fread(&x, 4, 1, stdin);
+    fread(&y, 4, 1, stdin);
+    fread(&id, 4, 1, stdin);
+    uint64_t ptr=lv[3].ptr;
+    *(int32_t *)((int32_t *)ptr+y*64+x)=id;
+
     return;
 }
 
 //4 byte x, 4 byte y
 void tile_clear (void){
+    uint32_t x, y;
+    fread(&x, 4, 1, stdin);
+    fread(&y, 4, 1, stdin);
+    uint64_t ptr=lv[3].ptr;
+    *(int32_t *)((int32_t *)ptr+y*64+x)=0;
+
     return;
 }
 
 // 16 bytes: x_1, y_1, x_2, y_2
 void viewbox_register (void) {
+    int32_t x_1, y_1, x_2, y_2;
+    fread(&x_1, 4, 1, stdin);
+    fread(&y_1, 4, 1, stdin);
+    fread(&x_2, 4, 1, stdin);
+    fread(&y_2, 4, 1, stdin);
+    (*game_state).pos_1.x = x_1;
+    (*game_state).pos_1.y = y_1;
+    (*game_state).pos_2.x = x_2;
+    (*game_state).pos_2.y = y_2;
+    return;
 
-}
+}   
