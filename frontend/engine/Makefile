@@ -1,7 +1,7 @@
 # Default settings (Linux/POSIX)
 CC      = gcc
-CFLAGS  = -Wall -Wextra -std=gnu11
-SRCS    = main.c time.c runtime.c cmd.c io.c mem.c
+CFLAGS  = -std=gnu11 -O2 -fno-strict-aliasing -Wno-unused-result
+SRCS    = main.c time.c runtime.c cmd.c io.c mem.c bda.c
 TARGET  = main
 EXT     =
 

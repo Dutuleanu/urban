@@ -1,0 +1,13 @@
+/*building_sizes.bda*/
+empty 1, 1;
+road 1, 1;
+cottage 1, 1;
+house 1, 1;
+shop 1, 1;
+clinic 1, 2;
+clinic flip 2, 1;
+clinic pad 0, 0;
+police station 1, 2;
+police station flip 2, 1;
+police station pad 0, 0;
+park 1, 1;
