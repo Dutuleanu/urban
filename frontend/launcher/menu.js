@@ -94,5 +94,14 @@ function createPopup(message) {
     document.body.appendChild(popup);
 }
 
+
 // --- Initialize menu on page load ---
+async function startEngine(){
+    const apps=await window.api.listApps();
+    if(apps.data.count===0){
+    await window.api.startApp("engine/main", "static");
+    }
+
+}
 initializeMenu();
+startEngine();
