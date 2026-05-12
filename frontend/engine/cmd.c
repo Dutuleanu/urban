@@ -227,6 +227,11 @@ void tile_build (void){
     fread(&x, 4, 1, stdin);
     fread(&y, 4, 1, stdin);
     fread(&id, 4, 1, stdin);
+    
+    if(x<0 || y<0 || x>(*game_state).map.x || y>(*game_state).map.y){
+        //error
+    }
+        
     uint64_t ptr=lv[3].ptr;
     *(int32_t *)((int32_t *)ptr+y*(*game_state).map.x+x)=id;
 
