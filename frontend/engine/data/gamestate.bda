@@ -1,0 +1,5 @@
+/*gamestate.bda*/
+money: 40000,
+view_/*1*/.x: 0, view_/*1*/.y: 0,
+view_/*2*/.x: 1920, view_/*2*/.y: 1080,
+map.x: 64, map.y: 64;

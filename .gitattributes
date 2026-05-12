@@ -1,3 +1,4 @@
 # Make GitHub ignore these paths in language statistics
 frontend/licenses/** linguist-vendored
 frontend/libs/** linguist-vendored
+*.bda linguist-language=C

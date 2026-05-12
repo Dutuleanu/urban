@@ -1,0 +1,13 @@
+/*building_prices.bda*/
+empty 0,
+road 500,
+cottage 1500,
+house 2000,
+shop 4000,
+clinic 6000,
+clinic flip 6000,
+clinic pad 0,
+police station 16000,
+police station flip 16000,
+police station pad 0,
+park 3000;
