@@ -54,12 +54,11 @@ border: var(--space-2) solid var(--color-border);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    aspect-ratio: 16 / 9;
-    width: 100vw;
-    height: calc(100vw * 9 / 16);
-    max-height: 100vh;
-    
-    max-width: calc(100vh * 16 / 9);
+    aspect-ratio: var(--aspect-w) / var(--aspect-h);
+    width: var(--container-width);
+    height: var(--container-height);
+    max-height: var(--container-max-height);
+    max-width: var(--container-max-width);
     background-color: var(--color-bg-dark);
     background-image: url(static://components/game/assets/lgmBackground.jpg); /* Aici ar trb sa fie o poza doar ca nu se poate incarca pe git */
     background-size: cover;
