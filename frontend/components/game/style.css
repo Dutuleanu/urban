@@ -15,7 +15,6 @@ h1 {
     gap: var(--space-45);
     width: 100%;
     max-width: var(--space-200);
-    
 }
 
 button {
