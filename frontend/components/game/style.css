@@ -11,8 +11,7 @@ h1 {
 
 .button-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(var(--space-200), 1fr));
-    gap: var(--space-45);
+    gap: var(--space-80);
     width: 100%;
     max-width: var(--space-200);
 }
@@ -55,11 +54,11 @@ border: var(--space-2) solid var(--color-border);
     left: 50%;
     transform: translate(-50%, -50%);
     aspect-ratio: var(--aspect-w) / var(--aspect-h);
-    width: var(--container-width);
-    height: var(--container-height);
+    width: var(--space-1200);
+    height: var(--space-800);
     max-height: var(--container-max-height);
     max-width: var(--container-max-width);
-    background-color: var(--color-bg-dark);
+    background-color: var(--color-bg-light);
     background-image: url(static://components/game/assets/lgmBackground.jpg); /* Aici ar trb sa fie o poza doar ca nu se poate incarca pe git */
     background-size: cover;
     background-position: center;
@@ -83,12 +82,9 @@ border: var(--space-2) solid var(--color-border);
     width: var(--space-80);
     height: var(--space-80);
     background: transparent; 
-    background-image: url(static://components/game/assets/lgmBtnExit.png);/* Aici ar trb sa fie o poza doar ca nu se poate incarca pe git */
-    background-size: cover;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border: none;                
+    color:var(--color-red);
+    border:var(--space-10) solid var(--color-border);
+    border-top:var(--space-10);                
     outline: none;               
     box-shadow: none;           
     cursor: pointer;
