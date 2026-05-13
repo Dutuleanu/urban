@@ -13,8 +13,7 @@ h1 {
     display: grid;
     gap: var(--space-80);
     width: 100%;
-    max-width: var(--space-800);
-    
+    max-width: var(--space-200);
 }
 
 button {
