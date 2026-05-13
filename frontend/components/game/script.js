@@ -1,4 +1,4 @@
-// process-manager.js// process-manager.js
+// process-manager.js
 
 import { Application, Assets, Sprite, } from 'pixi.js';
 
